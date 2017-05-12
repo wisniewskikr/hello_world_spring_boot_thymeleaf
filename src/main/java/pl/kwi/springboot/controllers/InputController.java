@@ -27,7 +27,7 @@ public class InputController {
 	public String handleButtonOk(
 			@Valid @ModelAttribute("command")InputCommand command) {
 		nameService.save(command.getName());
-		return "input";
+		return "redirect:/output";
 	}
 
 }

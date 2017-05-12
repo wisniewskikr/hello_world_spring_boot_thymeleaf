@@ -1,1 +1,5 @@
-# hello_world_spring_boot_thymeleaf
+TO DO:
+- validation;
+- html text from properties;
+- internationalizm;
+- security.
