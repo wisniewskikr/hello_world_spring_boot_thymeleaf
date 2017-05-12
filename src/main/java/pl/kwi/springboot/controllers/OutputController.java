@@ -2,6 +2,7 @@ package pl.kwi.springboot.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +29,10 @@ public class OutputController{
 	 * @return object ModelAndView with default page connected with this controller
 	 */
 	@RequestMapping
-	public String displayPage(){
-		System.out.println("name: " + nameService.load());
+	public String displayPage(Model model){
+		OutputCommand command = new OutputCommand();
+		command.setName(nameService.load());
+		model.addAttribute("command", command);
 		return "output";
 	}
 	
@@ -43,7 +46,7 @@ public class OutputController{
 	 */
 	@RequestMapping(value="/handle-button-back", method=RequestMethod.POST)
 	public String handleButtonBack(@ModelAttribute("command")OutputCommand command){
-		return "output";
+		return "redirect:/input";
 	}	
 
 }
