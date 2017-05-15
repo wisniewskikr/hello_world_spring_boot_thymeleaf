@@ -6,6 +6,7 @@
 	<groupId>pl.kwi</groupId>
 	<artifactId>hello_world_spring_boot_thymeleaf</artifactId>	
 	<version>0.0.1</version>
+	<packaging>war</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -18,7 +19,12 @@
 	</properties>
 
 	<dependencies>
-
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -30,8 +36,8 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
-
 	</dependencies>
+		
 	<build>
 		<plugins>
 			<!-- Package as an executable jar/war -->
@@ -41,4 +47,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 </project>
