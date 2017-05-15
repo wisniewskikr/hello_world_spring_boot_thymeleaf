@@ -18,17 +18,19 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<dependencies>
+	<dependencies>	
+		<!-- Thymeleaf dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
+		<!-- Remove Tomcat embedded dependencies -->
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
 
 		<!-- hot swapping, disable cache for template, enable live reload -->
 		<dependency>
