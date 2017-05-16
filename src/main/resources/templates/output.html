@@ -5,18 +5,17 @@
 	<title>Output</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-	<link rel="stylesheet" th:href="@{/css/main.css}"
-		href="../../css/main.css" />
+	<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
 	<link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.3/smoothness/jquery-ui-1.10.3.custom.css}"
 		href="../../css/jquery-ui-1.10.3/smoothness/jquery-ui-1.10.3.custom.css" />	
-	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>	
+	<script type="text/javascript" th:inline="javascript" th:src="@{/js/jquery-1.9.1.js}"></script>
+	<script type="text/javascript" th:inline="javascript" th:src="@{/js/jquery-ui-1.10.3.custom.js}"></script>
+	<script type="text/javascript" th:inline="javascript" th:src="@{/js/script.js}"></script>	
 </head>
 
 <body>
 
-	<form method="post" action="output/handle-button-back" th:object="${command}">
+	<form method="post" action="#" th:action="@{/output/handle-button-back}" th:object="${command}">
 		<div class="page">
 			<div id="title" class="title"><h2>Hello World</h2></div>
 			<div id="subtitle" class="subtitle"><h3>Page: <b>Output</b></h3></div>
