@@ -22,8 +22,7 @@ public class InputController {
 
 	@RequestMapping
 	public String displayPage(Model model) {
-		InputCommand command = new InputCommand();
-		model.addAttribute("command", command);
+		model.addAttribute("command", new InputCommand());
 		return "input";
 	}
 	
