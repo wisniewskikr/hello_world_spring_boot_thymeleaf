@@ -1,6 +1,7 @@
 package pl.kwi.springboot.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +19,16 @@ public class OutputController{
 	@Autowired
 	private NameService nameService;
 	
+	@Value("${output.template}")
+	private String template;
+	
 	
 	@RequestMapping
 	public String displayPage(Model model){
 		OutputCommand command = new OutputCommand();
 		command.setName(nameService.load());
 		model.addAttribute("command", command);
-		return "output";
+		return template;
 	}
 	
 	@RequestMapping(value="/handle-button-back", method=RequestMethod.POST)
