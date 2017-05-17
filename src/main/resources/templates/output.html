@@ -18,11 +18,11 @@
 	<form method="post" action="#" th:action="@{/output/handle-button-back}" th:object="${command}">
 		<div class="page">
 			<div id="title" class="title"><h2>Hello World</h2></div>
-			<div id="subtitle" class="subtitle"><h3>Page: <b>Output</b></h3></div>
+			<div id="subtitle" class="subtitle"><h3>Page: Output</h3></div>
 			<div id="content" class="content">
 				<div class="contentElement">
 					<div>&nbsp;</div>
-					<div id="name" class="text"> Hello World <b th:text="*{name}"></b> </div>
+					<div id="name" class="textOutput"> <span>Hello World</span> <b th:text="*{name}"></b> </div>
 					<div class="image"><img id="duke" alt="duke" th:src="@{/images/duke.jpg}"/></div>
 				</div>
 				

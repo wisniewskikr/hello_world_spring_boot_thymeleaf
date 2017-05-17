@@ -24,10 +24,16 @@
 	height: 80px;
 }
 
-.text {
+.textInput {
 	font-weight: bold;
 	margin-bottom: 10px;
 	text-align: left;
+}
+
+.textOutput {
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: center;
 }
 
 .input {
