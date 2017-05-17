@@ -1,9 +1,6 @@
-Example application with usage Spring Boot with properties file.
-
-Notification:
-- file name application.properties is default. Another does not work;
-- properties from file are used in Java classes, not in templates 
+Example application with usage Spring Boot and Thymeleaf with properties file.
 
 Steps:
-- add properties file: \src\main\resources\application.properties
-- in classes use annotation @Value
+- add properties file: \src\main\resources\props\input.properties and \src\main\resources\props\output.properties
+- create configuration class WebConfig and define then messageSource
+- in templates use properties from files. For instance: #{input.text}
