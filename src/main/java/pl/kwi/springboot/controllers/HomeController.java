@@ -1,15 +1,23 @@
 package pl.kwi.springboot.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/")
 public class HomeController {
 
-	@RequestMapping
+	@RequestMapping(value="/")
 	public String index() {
-		return "redirect:input";
+		return "redirect:en_US/input";
+	}
+	
+	@RequestMapping(value="/{loc}")
+	public String indexWithLocale(
+			@PathVariable(name = "loc") String loc) {
+		
+		return "redirect:/" + loc +"/input";
+		
 	}
 	
 }

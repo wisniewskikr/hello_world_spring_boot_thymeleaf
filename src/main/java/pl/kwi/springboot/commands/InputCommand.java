@@ -1,13 +1,13 @@
 package pl.kwi.springboot.commands;
 
-import java.io.Serializable;
+import pl.kwi.springboot.commands.abstr.AbstractCommand;
 
-public class InputCommand implements Serializable{
+public class InputCommand extends AbstractCommand {
 	
-	private static final long serialVersionUID = 1L;
-	
+
 	private String name;
 
+	
 	public String getName() {
 		return name;
 	}
