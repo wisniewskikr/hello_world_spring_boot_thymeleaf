@@ -1,6 +1,7 @@
 TO DO:
+- locale with properties;
+- 404 handling;
 - logs;
-- internationalizm;
 - security;
 - JUnit tests;
 - integration tests.
