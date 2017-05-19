@@ -24,7 +24,6 @@ public class InputController extends AbstractController {
 			@ModelAttribute("command")InputCommand command,
 			Model model) {
 		
-		System.out.println("loc: " + command.getLoc());
 		model.addAttribute("command", command);
 		return "input";
 	}
