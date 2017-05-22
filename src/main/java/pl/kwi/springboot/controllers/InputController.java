@@ -41,6 +41,13 @@ public class InputController extends AbstractController {
 		
 	}
 	
+	@RequestMapping(value="/input/handle-language-change", method=RequestMethod.POST)
+	public String handleLanguageChange(
+			@ModelAttribute("language")String language) {	
+		return "redirect:/" + language + "/input";
+		
+	}
+	
 	@ModelAttribute("languages")
 	public List<Language> populateLanguages() {		
 	    List<Language> languages = new ArrayList<Language>();

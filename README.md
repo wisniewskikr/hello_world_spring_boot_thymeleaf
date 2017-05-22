@@ -1,7 +1,7 @@
-Example project Spring Boot + Thymeleaf showing usage of locale.
+Example project Spring Boot + Thymeleaf showing changing locale by dropdown list.
 
 Steps:
-- abstract Command;
-- abstract Controller;
-- update redirect in Controllers;
-- update action in templates.
+- add init dropdown filling in controller;
+- add dropdown in template;
+- add js form sending;
+- add dropdown handling in controller.

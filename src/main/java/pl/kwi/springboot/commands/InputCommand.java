@@ -10,6 +10,7 @@ public class InputCommand extends AbstractCommand {
 
 	private String name;
 	private List<Language> languages;
+	private String language;
 
 	
 	public String getName() {
@@ -24,6 +25,14 @@ public class InputCommand extends AbstractCommand {
 	}
 	public void setLanguages(List<Language> languages) {
 		this.languages = languages;
+	}
+	
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
 	}	
+	
 	
 }

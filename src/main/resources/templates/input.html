@@ -20,7 +20,7 @@
 			<div id="title" class="title multi">
 				<h2>Hello World</h2>
 				<span class="language">
-					<select>
+					<select id="language" name="language" onchange="onLanguageChange(this);">
 						<option th:each="language : ${languages}" th:value="${language.locale}" th:text="${language.name}" th:selected="*{loc} == ${language.locale}"></option>
 					</select>
 				</span>
