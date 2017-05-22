@@ -1,7 +1,5 @@
-Example project Spring Boot + Thymeleaf showing usage of locale.
+Example project Spring Boot + Thymeleaf showing usage of locale with properties.
 
 Steps:
-- abstract Command;
-- abstract Controller;
-- update redirect in Controllers;
-- update action in templates.
+- add LocaleInterceptor;
+- improvement of WebConfig: add LocaleInterceptor and set LocaleResolver as Coockie.
