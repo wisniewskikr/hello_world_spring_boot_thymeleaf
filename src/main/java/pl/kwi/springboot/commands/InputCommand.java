@@ -10,7 +10,7 @@ import pl.kwi.springboot.daos.Language;
 public class InputCommand extends AbstractCommand {
 	
 
-	@NotEmpty(message="{input.validation.notEmpty}")
+	@NotEmpty
 	private String name;
 	private List<Language> languages;
 	private String language;
