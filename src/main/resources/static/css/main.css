@@ -70,3 +70,22 @@
 .image {
 	text-align: center;
 }
+
+.multi {
+	padding: 20px;
+}
+
+.multi h2 {
+	display: inline;	
+}
+
+.multi span {
+	display: inline;
+	float: right;
+}
+
+.language select {
+	font-family: "Open Sans", Verdana, sans-serif;
+	color: #5F5F5F;
+	font-size: 1.4em
+}	

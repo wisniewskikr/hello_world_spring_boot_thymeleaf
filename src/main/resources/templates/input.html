@@ -17,7 +17,14 @@
 
 	<form method="post" action="#" th:action="@{/{base}/input/handle-button-ok(base=${loc})}" th:object="${command}">
 		<div class="page">
-			<div id="title" class="title"><h2 th:text="#{input.title}"></h2></div>
+			<div id="title" class="title multi">
+				<h2>Hello World</h2>
+				<span class="language">
+					<select id="language" name="language" onchange="onLanguageChange(this);">
+						<option th:each="language : ${languages}" th:value="${language.locale}" th:text="${language.name}" th:selected="*{loc} == ${language.locale}"></option>
+					</select>
+				</span>
+			</div>
 			<div id="subtitle" class="subtitle"><h3 th:text="#{input.subtitle}"></h3></div>
 			<div id="content" class="content">
 				<div class="contentElement">
