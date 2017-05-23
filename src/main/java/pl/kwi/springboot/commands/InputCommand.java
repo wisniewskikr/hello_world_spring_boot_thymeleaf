@@ -2,12 +2,15 @@ package pl.kwi.springboot.commands;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import pl.kwi.springboot.commands.abstr.AbstractCommand;
 import pl.kwi.springboot.daos.Language;
 
 public class InputCommand extends AbstractCommand {
 	
 
+	@NotEmpty(message="{input.validation.notEmpty}")
 	private String name;
 	private List<Language> languages;
 	private String language;

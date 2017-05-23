@@ -28,7 +28,7 @@
 			<div id="subtitle" class="subtitle"><h3 th:text="#{input.subtitle}"></h3></div>
 			<div id="content" class="content">
 				<div class="contentElement">
-					<div class="textInput" th:text="#{input.text}"></div>
+					<div class="textInput"> <span th:text="#{input.text}"></span> <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span> </div>
 					<div class="input"><input type="text" id="name" name="name"/></div>
 					<div class="description" th:text="#{input.description}"></div>
 				</div>
