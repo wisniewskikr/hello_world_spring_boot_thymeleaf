@@ -1,5 +1,6 @@
-Example project Spring Boot + Thymeleaf showing usage of locale with properties.
+Example project Spring Boot + Thymeleaf showing usage of locale with properties and validation.
 
-Steps:
-- add LocaleInterceptor;
-- improvement of WebConfig: add LocaleInterceptor and set LocaleResolver as Coockie.
+Steps for validation:
+- in properties add property with the name of validation annotation (for instance: NotEmpty);
+- add validation handling in controller;
+- add validation handling in template.
