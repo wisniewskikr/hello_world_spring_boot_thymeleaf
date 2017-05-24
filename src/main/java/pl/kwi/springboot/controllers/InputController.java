@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,11 @@ public class InputController {
 	@RequestMapping(value="/handle-button-ok", method=RequestMethod.POST)
 	public String handleButtonOk(
 			@Valid @ModelAttribute("command")InputCommand command) {
+		
+		if (StringUtils.isEmpty(command.getName())) {
+			throw new IllegalStateException("Name is null");
+		}
+		
 		nameService.save(command.getName());
 		return "redirect:/output";
 	}
