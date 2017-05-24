@@ -6,11 +6,10 @@ import java.util.Locale;
 
 import javax.validation.Valid;
 
-import org.apache.commons.lang3.LocaleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,16 +37,20 @@ public class InputController extends AbstractController {
 	@RequestMapping(value="/input")
 	public String displayPage(
 			@ModelAttribute("command")InputCommand command,
-			Model model) {
+			Model model) {	
 		
 		model.addAttribute("command", command);
 		return "input";
+		
 	}
 	
 	@RequestMapping(value="/input/handle-button-ok", method=RequestMethod.POST)
 	public String handleButtonOk(
 			@Valid @ModelAttribute("command")InputCommand command) {
 		
+		if (StringUtils.isEmpty(command.getName())) {
+			throw new IllegalStateException("Name is null");
+		}
 		nameService.save(command.getName());
 		return "redirect:/" + command.getLoc() + "/output";
 		
