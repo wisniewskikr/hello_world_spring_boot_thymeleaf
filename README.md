@@ -1,6 +1,6 @@
 TO DO:
-- 404 handling;
 - logs;
 - security;
+- hibernate;
 - JUnit tests;
 - integration tests.
