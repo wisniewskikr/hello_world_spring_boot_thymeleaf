@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import static org.apache.commons.lang3.StringUtils.defaultString;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,10 +46,15 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
         }
 
         if (variables.length > 1 && isLocale(variables[1])) {
-        	loc = variables[1];
+        	loc = variables[1];        	
         } else {
         	throw new IllegalStateException("No locala available");
         }
+        
+        ResourceBundle bundle = ResourceBundle.getBundle("props/locale", LocaleUtils.toLocale(loc));
+    	if (!LocaleUtils.toLocale(loc).equals(bundle.getLocale())) {
+    		throw new IllegalStateException("No locala definied");
+    	}
         
         return loc;
     	
