@@ -39,10 +39,16 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
     	
     	String url = defaultString(request.getRequestURI().substring(request.getContextPath().length()));
         String[] variables = url.split("/");
+        
+        if (variables == null || variables.length == 0) {
+        	return loc;
+        }
 
-        if (variables.length > 2 && isLocale(variables[1])) {
+        if (variables.length > 1 && isLocale(variables[1])) {
         	loc = variables[1];
-        } 
+        } else {
+        	throw new IllegalStateException("No locala available");
+        }
         
         return loc;
     	
