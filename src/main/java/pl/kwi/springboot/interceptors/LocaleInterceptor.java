@@ -41,7 +41,7 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
     	String url = defaultString(request.getRequestURI().substring(request.getContextPath().length()));
         String[] variables = url.split("/");
         
-        if (variables == null || variables.length == 0) {
+        if (variables == null || variables.length == 0 || "error".equals(variables[1])) {
         	return loc;
         }
 
