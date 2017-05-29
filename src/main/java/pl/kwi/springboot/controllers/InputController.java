@@ -9,14 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.kwi.springboot.commands.InputCommand;
-import pl.kwi.springboot.services.NameService;
+import pl.kwi.springboot.services.IdService;
+import pl.kwi.springboot.services.UserService;
 
 @Controller
 @RequestMapping(value="/input")
 public class InputController {
 	
 	@Autowired
-	private NameService nameService;
+	private IdService idService;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping
 	public String displayPage() {
@@ -26,7 +30,9 @@ public class InputController {
 	@RequestMapping(value="/handle-button-ok", method=RequestMethod.POST)
 	public String handleButtonOk(
 			@Valid @ModelAttribute("command")InputCommand command) {
-		nameService.save(command.getName());
+		
+		long id = userService.createUserWithName(command.getName());
+		idService.save(String.valueOf(id));
 		return "redirect:/output";
 	}
 

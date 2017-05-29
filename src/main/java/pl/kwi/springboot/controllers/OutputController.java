@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.kwi.springboot.commands.OutputCommand;
-import pl.kwi.springboot.services.NameService;
+import pl.kwi.springboot.services.IdService;
+import pl.kwi.springboot.services.UserService;
 
 
 @Controller
@@ -16,15 +17,22 @@ public class OutputController{
 	
 	
 	@Autowired
-	private NameService nameService;
+	private IdService idService;
+	
+	@Autowired
+	private UserService userService;
 	
 	
 	@RequestMapping
 	public String displayPage(Model model){
+		
 		OutputCommand command = new OutputCommand();
-		command.setName(nameService.load());
+		String id = idService.load();
+		String name = userService.getNameUserById(Long.valueOf(id));
+		command.setName(name);
 		model.addAttribute("command", command);
 		return "output";
+		
 	}
 	
 	@RequestMapping(value="/handle-button-back", method=RequestMethod.POST)
