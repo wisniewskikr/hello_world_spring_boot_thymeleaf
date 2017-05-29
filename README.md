@@ -1,6 +1,5 @@
 TO DO:
-- logs;
+- db;
 - security;
-- hibernate;
 - JUnit tests;
 - integration tests.
