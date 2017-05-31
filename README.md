@@ -1,4 +1,4 @@
-Spring Boot + Thymeleaf application with example usage of H2 database.
+Spring Boot + Thymeleaf application with example usage of Derby database.
 
 Differences vs basic:
 - in POM add db dependencies;
