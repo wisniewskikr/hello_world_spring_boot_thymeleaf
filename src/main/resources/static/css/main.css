@@ -72,10 +72,13 @@
 }
 
 .header {
-	display: inline;
-	text-align: left;	
+	padding-bottom: 20px;
 }
 
 .header div {
+	float: left;
+}
+
+.header input {
 	float: right;
 }
