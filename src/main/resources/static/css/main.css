@@ -70,3 +70,12 @@
 .image {
 	text-align: center;
 }
+
+.header {
+	display: inline;
+	text-align: left;	
+}
+
+.header div {
+	float: right;
+}
