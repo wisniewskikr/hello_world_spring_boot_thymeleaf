@@ -82,3 +82,7 @@
 .header input {
 	float: right;
 }
+
+.alert-error {
+	color: red;
+}
