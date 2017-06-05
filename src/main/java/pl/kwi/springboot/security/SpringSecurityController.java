@@ -19,7 +19,7 @@ public class SpringSecurityController {
 	
 	@RequestMapping(value="/error403/handle-button-back", method=RequestMethod.POST)
 	public String handleButtonBack(){
-		return "redirect:/";
+		return "redirect:/login";
 	}
 
 }
