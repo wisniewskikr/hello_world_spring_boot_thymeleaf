@@ -6,7 +6,7 @@
 	<groupId>pl.kwi</groupId>
 	<artifactId>hello_world_spring_boot_thymeleaf</artifactId>	
 	<version>0.0.1</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -29,7 +29,6 @@
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
         </dependency>
 
 		<!-- hot swapping, disable cache for template, enable live reload -->
@@ -44,8 +43,11 @@
 		<plugins>
 			<!-- Package as an executable jar/war -->
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-maven-plugin</artifactId>
+			    <configuration>
+			        <executable>true</executable>
+			    </configuration>
 			</plugin>
 		</plugins>
 	</build>
