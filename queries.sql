@@ -13,7 +13,7 @@ CREATE TABLE user_roles (
   CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username));
   
 INSERT INTO users(username,password,enabled)
-VALUES ('admin','password', true);
+VALUES ('admin','admin', true);
 
 INSERT INTO user_roles (username, role)
 VALUES ('admin', 'ROLE_ADMIN');
