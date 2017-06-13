@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS user_roles, users;
+
 CREATE  TABLE users (
   username VARCHAR(45) NOT NULL ,
   password VARCHAR(45) NOT NULL ,
@@ -14,7 +16,7 @@ CREATE TABLE user_roles (
   CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username));
   
 INSERT INTO users(username,password,enabled)
-VALUES ('admin','password', true);
+VALUES ('admin','admin', true);
 
 INSERT INTO user_roles (username, role)
 VALUES ('admin', 'ROLE_ADMIN');
