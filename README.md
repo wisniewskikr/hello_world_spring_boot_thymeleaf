@@ -1,6 +1,6 @@
-Spring Boot + Thymeleaf + Spring Security + MySql
+Spring Boot + Thymeleaf + Spring Security + H2
 
-Example application displays how Spring Security works. Users are stored in MySql database.
+Example application displays how Spring Security works. Users are stored in H2 database.
 
 Differences vs branch "spring-security-mysql":
 - add in SpringSecurityConfig ".headers().frameOptions().disable();";
