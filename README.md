@@ -1,10 +1,8 @@
-Spring Boot + Thymeleaf + Spring Security
+Spring Boot + Thymeleaf + Spring Security + Password Encoder
 
-Example application displays how Spring Security works. Users are stored in memory.
+Example application displays how Spring Security works with password encoder. Example user: admin/admin.
 
-Differences vs basic:
-- add SpringSecurityConfig;
-- add LoginController;
-- add security/login.html template;
-- add logout section to all secured pages;
-- add styles for security elements.
+Differences vs spring security:
+- create bean with password encoder in class WebConfig;
+- use password encoder in SpringSecurityConfig;
+- change password for encoded.
