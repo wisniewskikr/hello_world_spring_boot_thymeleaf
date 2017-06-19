@@ -1,5 +1,6 @@
 package pl.kwi.springboot.services;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -7,7 +8,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import au.com.bytecode.opencsv.CSVReader;
+import com.opencsv.CSVReader;
+
 
 @Service
 public class CsvService {
@@ -17,14 +19,24 @@ public class CsvService {
 		
 		List<String[]> result = new ArrayList<String[]>();
 		
+		CSVReader csvReader = null;
 		try {
 			
-			CSVReader csvReader = new CSVReader(new InputStreamReader(is));
+			csvReader = new CSVReader(new InputStreamReader(is));
 			result = csvReader.readAll();
-			csvReader.close();
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (csvReader != null) {
+				try {
+					csvReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
 		}
 		
 		return result;
