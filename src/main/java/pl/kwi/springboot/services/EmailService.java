@@ -37,8 +37,7 @@ public class EmailService {
     public void sendHelloWorldEmail(String name) {
     	
     	Map<String, Object> customProperties = new HashMap<String, Object>();
-    	customProperties.put("name", name);
-    	
+    	customProperties.put("name", name);    	
     	sendHtmlEmail(customProperties);
     	
     }
