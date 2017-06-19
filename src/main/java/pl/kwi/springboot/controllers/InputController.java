@@ -4,11 +4,11 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
+import pl.kwi.springboot.commands.InputCommand;
 import pl.kwi.springboot.services.NameService;
 
 @Controller
@@ -24,9 +24,9 @@ public class InputController {
 	}
 	
 	@RequestMapping(value="/handle-button-ok", method=RequestMethod.POST)
-	public String handleButtonOk(@RequestParam("file") MultipartFile file) throws IOException {
+	public String handleButtonOk(@ModelAttribute("command")InputCommand command) throws IOException {
 		
-		String name = new String(file.getBytes());
+		String name = new String(command.getFile().getBytes());
 		nameService.save(name);
 		return "redirect:/output";
 		
