@@ -1,7 +1,5 @@
 package pl.kwi.springboot.controllers;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,8 +22,7 @@ public class InputController {
 	}
 	
 	@RequestMapping(value="/handle-button-ok", method=RequestMethod.POST)
-	public String handleButtonOk(
-			@Valid @ModelAttribute("command")InputCommand command) {
+	public String handleButtonOk(@ModelAttribute("command")InputCommand command) {
 		nameService.save(command.getName());
 		return "redirect:/output";
 	}
