@@ -15,7 +15,7 @@
 
 <body>
 
-	<form method="post" action="#" th:action="@{/input/handle-button-ok}">
+	<form id="inputForm" method="post" action="#" th:action="@{/input/handle-button-ok}">
 		<div class="page">
 			<div id="title" class="title"><h2>Hello World</h2></div>
 			<div id="subtitle" class="subtitle"><h3>Page: Input</h3></div>
@@ -33,5 +33,7 @@
 		</div>
 	</form>	
 
+<!-- Please wait sign -->
+<div class="modal"></div>
 </body>
 </html>
