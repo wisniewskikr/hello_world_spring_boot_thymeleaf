@@ -23,7 +23,7 @@ public class UserService {
 	
 	public void registerUser(String login, String password) {
 		
-		userRepository.save(new UserEntity(login, password));
+		userRepository.save(new UserEntity(login, password, true));
 		userRoleRepository.save(new UserRoleEntity(login, ROLE_ADMIN));
 		
 	}

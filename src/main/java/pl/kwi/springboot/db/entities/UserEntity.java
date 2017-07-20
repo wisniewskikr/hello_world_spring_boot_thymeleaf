@@ -14,9 +14,10 @@ public class UserEntity {
 	
 	public UserEntity() {}
 	
-	public UserEntity(String userName, String password) {
+	public UserEntity(String userName, String password, boolean enabled) {
 		this.userName = userName;
 		this.password = password;
+		this.enabled = enabled;
 	}
 	
 	
@@ -30,6 +31,9 @@ public class UserEntity {
 	
 	@Column
 	private String password;
+	
+	@Column
+	private boolean enabled;
 	
 
 	public long getId() {
@@ -52,6 +56,13 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+		
 
 }
