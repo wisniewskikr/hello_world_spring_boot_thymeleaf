@@ -14,7 +14,7 @@ import pl.kwi.springboot.commands.ConfirmationCommand;
 public class ConfirmationController {
 	
 	@RequestMapping
-	public String displayPage() {
+	public String displayPage(@ModelAttribute("command")ConfirmationCommand command) {
 		return "confirmation";
 	}
 	
