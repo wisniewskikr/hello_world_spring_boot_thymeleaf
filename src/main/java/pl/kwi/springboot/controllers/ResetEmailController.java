@@ -13,6 +13,7 @@ import pl.kwi.springboot.commands.ResetEmailCommand;
 import pl.kwi.springboot.enums.ConfirmationEnum;
 import pl.kwi.springboot.services.EmailService;
 import pl.kwi.springboot.services.TokenService;
+import pl.kwi.springboot.services.UserService;
 
 @Controller
 @RequestMapping(value="/resetEmail")
@@ -27,6 +28,9 @@ public class ResetEmailController {
 	@Autowired
 	private TokenService tokenService;
 	
+	@Autowired
+	private UserService userService;
+	
 	 
 	@RequestMapping
 	public String displayPage() {
@@ -38,14 +42,15 @@ public class ResetEmailController {
 			@Valid @ModelAttribute("command")ResetEmailCommand command,
 			RedirectAttributes redirectAttributes) {
 		
-		emailService.sendResetEmail(command.getEmail(), createLink(command.getEmail()));
+		String token = tokenService.generateTokenForEmail(command.getEmail());
+		userService.addTokenToUser(command.getEmail(), token);
+		emailService.sendResetEmail(command.getEmail(), createLink(command.getEmail(), token));
 		
 		redirectAttributes.addAttribute("confirmationEnum", ConfirmationEnum.RESET_EMAIL);
 		return "redirect:/confirmation";
 	}
 	
-	private String createLink(String email) {		
-		String token = tokenService.generateTokenForEmail(email);		
+	private String createLink(String email, String token) {						
 		return LINK + token;
 	}
 

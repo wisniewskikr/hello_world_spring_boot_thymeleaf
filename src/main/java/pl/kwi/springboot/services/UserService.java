@@ -32,5 +32,11 @@ public class UserService {
 		
 	}
 	
+	public void addTokenToUser(String email, String token) {
+		UserEntity user = userRepository.findByEmail(email);
+		user.setToken(token);
+		userRepository.save(user);
+	}
+	
 	
 }
