@@ -23,8 +23,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 			throws Exception {
 		auth.
 			jdbcAuthentication()
-				.usersByUsernameQuery("select username, password, enabled from users where username=?")
-				.authoritiesByUsernameQuery("select username, role from user_roles where username=?")
+				.usersByUsernameQuery("select email, password, enabled from users where email=?")
+				.authoritiesByUsernameQuery("select email, role from user_roles where email=?")
 				.dataSource(dataSource)
 				.passwordEncoder(bCryptPasswordEncoder);
 	}
@@ -40,7 +40,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 					.and()
                 .formLogin()
 					.loginPage("/login")
-					.usernameParameter("username")
+					.usernameParameter("email")
 					.passwordParameter("password")
 					.permitAll()
 					.and()

@@ -14,8 +14,8 @@ public class UserEntity {
 	
 	public UserEntity() {}
 	
-	public UserEntity(String userName, String password, boolean enabled) {
-		this.userName = userName;
+	public UserEntity(String email, String password, boolean enabled) {
+		this.email = email;
 		this.password = password;
 		this.enabled = enabled;
 	}
@@ -26,8 +26,8 @@ public class UserEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name="username")
-	private String userName;
+	@Column
+	private String email;
 	
 	@Column
 	private String password;
@@ -41,15 +41,15 @@ public class UserEntity {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
+	}	
 	
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}

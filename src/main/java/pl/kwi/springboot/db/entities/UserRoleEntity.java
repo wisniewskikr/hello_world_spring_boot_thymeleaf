@@ -14,8 +14,8 @@ public class UserRoleEntity {
 	
 	public UserRoleEntity() {}
 	
-	public UserRoleEntity(String userName, String role) {
-		this.userName = userName;
+	public UserRoleEntity(String email, String role) {
+		this.email = email;
 		this.role = role;
 	}
 	
@@ -25,8 +25,8 @@ public class UserRoleEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name="username")
-	private String userName;
+	@Column
+	private String email;
 	
 	@Column
 	private String role;
@@ -37,15 +37,15 @@ public class UserRoleEntity {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
+	}	
 	
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+
 	public String getRole() {
 		return role;
 	}

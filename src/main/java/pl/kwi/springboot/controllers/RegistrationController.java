@@ -27,7 +27,7 @@ public class RegistrationController {
 	@RequestMapping(value="/handle-button-ok", method=RequestMethod.POST)
 	public String handleButtonOk(
 			@Valid @ModelAttribute("command")RegistrationCommand command) {
-		userService.registerUser(command.getLogin(), command.getPassword());
+		userService.registerUser(command.getEmail(), command.getPassword());
 		return "redirect:/confirmation";
 	}
 
