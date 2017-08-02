@@ -12,6 +12,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.6.RELEASE</version>
+		<relativePath /> 
 	</parent>
 
 	<properties>
@@ -19,14 +20,6 @@
 	</properties>
 
 	<dependencies>
-	
-		<!-- Resolve problem with missing EnvironmentCapable -->
-		<dependency>
-	        <groupId>org.springframework</groupId>
-	        <artifactId>spring-core</artifactId>
-	        <version>4.3.9.RELEASE</version> 
-	        <scope>compile</scope>
-	    </dependency>		
     	
 		<!-- Thymeleaf dependencies -->
 		<dependency>
