@@ -1,24 +1,36 @@
 package pl.kwi.springboot.controllers;
 
+import java.io.File;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
-import pl.kwi.springboot.Application;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest(value = "server.port=9000")
-@SeleniumTest(driver = ChromeDriver.class, baseUrl = "http://localhost:9000")
 public class InputControllerTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void test() throws InterruptedException {
+		
+		WebDriver driver = new FirefoxDriver(new FirefoxBinary(new File(
+				"C:\\java\\FF\\firefox.exe")), new FirefoxProfile());
+		
+		driver.get("http://localhost:8080/input");
+		WebElement input = driver.findElement(By.id("name"));
+		input.sendKeys("Chris");
+		input.submit();
+		WebElement output = driver.findElement(By.id("name"));
+		assertEquals("Hello World Chris", output.getText());
+		
+		driver.quit();
+		
 	}
 
 }
