@@ -5,16 +5,25 @@ import java.io.File;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.springframework.boot.context.embedded.LocalServerPort;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class InputControllerTest {
+	
+	@LocalServerPort
+    protected int serverPort;
 
 	@Test
 	public void test() throws InterruptedException {
@@ -22,7 +31,7 @@ public class InputControllerTest {
 		WebDriver driver = new FirefoxDriver(new FirefoxBinary(new File(
 				"C:\\java\\FF\\firefox.exe")), new FirefoxProfile());
 		
-		driver.get("http://localhost:8080/input");
+		driver.get("http://localhost:" + serverPort + "/input");
 		WebElement input = driver.findElement(By.id("name"));
 		input.sendKeys("Chris");
 		input.submit();
