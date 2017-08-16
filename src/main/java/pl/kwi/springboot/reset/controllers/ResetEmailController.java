@@ -1,4 +1,4 @@
-package pl.kwi.springboot.controllers;
+package pl.kwi.springboot.reset.controllers;
 
 import javax.validation.Valid;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pl.kwi.springboot.commands.ResetEmailCommand;
 import pl.kwi.springboot.enums.ConfirmationEnum;
+import pl.kwi.springboot.reset.commands.ResetEmailCommand;
 import pl.kwi.springboot.services.EmailService;
 import pl.kwi.springboot.services.TokenService;
 import pl.kwi.springboot.services.UserService;
@@ -34,7 +34,7 @@ public class ResetEmailController {
 	 
 	@RequestMapping
 	public String displayPage() {
-		return "resetEmail";
+		return "reset/resetEmail";
 	}
 	
 	@RequestMapping(value="/handle-button-ok", method=RequestMethod.POST)

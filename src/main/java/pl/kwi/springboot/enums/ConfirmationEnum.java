@@ -4,7 +4,8 @@ public enum ConfirmationEnum {
 	
 	
 	REGISTRATION("You have been registered successfully."), 
-	RESET_EMAIL("Email with reset password link was sent on your email account.");
+	RESET_EMAIL("Email with reset password link was sent on your email account."),
+	RESET_CHANGE("Your password has been changed.");
 	
 	private String message;
 	

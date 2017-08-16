@@ -1,4 +1,4 @@
-package pl.kwi.springboot.commands;
+package pl.kwi.springboot.reset.commands;
 
 import java.io.Serializable;
 
