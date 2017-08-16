@@ -4,11 +4,15 @@ import java.io.File;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -22,23 +26,42 @@ import org.openqa.selenium.WebElement;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class InputControllerTest {
 	
+	private static final String FIREFOX_LOCATION = "C:\\ff\\firefox.exe";
+	
+	private WebDriver driver;
+	private WebDriverWait wait;
+	
 	@LocalServerPort
     protected int serverPort;
+	
+	@Before
+	public void setUp() {
+		driver = new FirefoxDriver(new FirefoxBinary(new File(
+				FIREFOX_LOCATION)), new FirefoxProfile());
+		wait = new WebDriverWait(driver, 20);
+	}
+	
+	@After
+	public void close() {
+		driver.quit();
+	}
 
 	@Test
 	public void test() throws InterruptedException {
-		
-		WebDriver driver = new FirefoxDriver(new FirefoxBinary(new File(
-				"C:\\java\\FF\\firefox.exe")), new FirefoxProfile());
-		
+			
 		driver.get("http://localhost:" + serverPort + "/input");
+		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[text()='Page: Input']")));
 		WebElement input = driver.findElement(By.id("name"));
 		input.sendKeys("Chris");
 		input.submit();
-		WebElement output = driver.findElement(By.id("name"));
-		assertEquals("Hello World Chris", output.getText());
 		
-		driver.quit();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[text()='Page: Output']")));
+		WebElement output = driver.findElement(By.id("name"));
+		assertEquals("Hello World Chris", output.getText());		
+		driver.findElement(By.id("back")).click();
+		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[text()='Page: Input']")));
 		
 	}
 
