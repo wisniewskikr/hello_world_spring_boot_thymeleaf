@@ -18,13 +18,18 @@
 	
 	<div class="page">
 		    
-		<form method="post" action="#" th:action="@{/resetChange/handle-button-ok}">
+		<form method="post" action="#" th:action="@{/resetChange/handle-button-ok}" th:object="${command}">
+			<input type="hidden" name="token" th:value="*{token}"/>
 			<div id="title" class="title">
 				<h2>Hello World</h2></div>
 			<div id="subtitle" class="subtitle"><h3>Page: Reset Password - Change</h3></div>
 			<div id="content" class="content">
 				<div class="contentElement">
+					<span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</span>
 					<div class="input"><input type="password" id="password" name="password" placeholder="Password"/></div>
+					
+					<span class="error" th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}">Password Confirmation error</span>
+					<span class="error" th:if="${#fields.hasErrors('passwordsMatch')}" th:errors="*{passwordsMatch}">Password and Confirm do not match error</span>
 					<div class="input"><input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Password Confirmation"/></div>
 				</div>
 				

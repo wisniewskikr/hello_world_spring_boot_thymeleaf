@@ -43,7 +43,7 @@ public class ResetEmailController {
 			RedirectAttributes redirectAttributes) {
 		
 		String token = tokenService.generateTokenForEmail(command.getEmail());
-		userService.addTokenToUser(command.getEmail(), token);
+		userService.addToken(command.getEmail(), token);
 		emailService.sendResetEmail(command.getEmail(), createLink(command.getEmail(), token));
 		
 		redirectAttributes.addAttribute("confirmationEnum", ConfirmationEnum.RESET_EMAIL);

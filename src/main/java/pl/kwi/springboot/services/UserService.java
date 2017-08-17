@@ -32,9 +32,25 @@ public class UserService {
 		
 	}
 	
-	public void addTokenToUser(String email, String token) {
+	public void addToken(String email, String token) {
 		UserEntity user = userRepository.findByEmail(email);
 		user.setToken(token);
+		userRepository.save(user);
+	}
+	
+	public String getToken(String email) {
+		return userRepository.findByEmail(email).getToken();		
+	}
+	
+	public void removeToken(String email) {
+		UserEntity user = userRepository.findByEmail(email);
+		user.setToken(null);
+		userRepository.save(user);
+	}
+	
+	public void updatePassword(String email, String password) {
+		UserEntity user = userRepository.findByEmail(email);
+		user.setPassword(bCryptPasswordEncoder.encode(password));
 		userRepository.save(user);
 	}
 	
