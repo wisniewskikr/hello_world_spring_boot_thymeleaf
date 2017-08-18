@@ -1,8 +1,8 @@
-package pl.kwi.springboot.commands;
+package pl.kwi.springboot.registr.commands;
 
 import java.io.Serializable;
 
-public class RegistrationCommand implements Serializable{
+public class RegistrCommand implements Serializable{
 	
 	
 	private static final long serialVersionUID = 1L;

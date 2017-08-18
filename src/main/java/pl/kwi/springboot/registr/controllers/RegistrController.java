@@ -1,4 +1,4 @@
-package pl.kwi.springboot.controllers;
+package pl.kwi.springboot.registr.controllers;
 
 import javax.validation.Valid;
 
@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pl.kwi.springboot.commands.RegistrationCommand;
 import pl.kwi.springboot.enums.ConfirmationEnum;
+import pl.kwi.springboot.registr.commands.RegistrCommand;
 import pl.kwi.springboot.services.UserService;
 
 @Controller
 @RequestMapping(value="/registration")
-public class RegistrationController {
+public class RegistrController {
 	
 	
 	@Autowired
@@ -24,12 +24,12 @@ public class RegistrationController {
 	
 	@RequestMapping
 	public String displayPage() {
-		return "registration";
+		return "registr/registr";
 	}
 	
 	@RequestMapping(value="/handle-button-ok", method=RequestMethod.POST)
 	public String handleButtonOk(
-			@Valid @ModelAttribute("command")RegistrationCommand command,
+			@Valid @ModelAttribute("command")RegistrCommand command,
 			RedirectAttributes redirectAttributes) {
 		userService.registerUser(command.getEmail(), command.getPassword());
 		redirectAttributes.addAttribute("confirmationEnum", ConfirmationEnum.REGISTRATION);
