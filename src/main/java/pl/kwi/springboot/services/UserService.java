@@ -13,7 +13,7 @@ import pl.kwi.springboot.db.repositories.UserRoleRepository;
 public class UserService {
 	
 	
-	private final static String ROLE_ADMIN = "ROLE_ADMIN";
+	private final static String ROLE_USER = "ROLE_USER";
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -28,7 +28,7 @@ public class UserService {
 	public void registerUser(String login, String password) {
 		
 		userRepository.save(new UserEntity(login, bCryptPasswordEncoder.encode(password), true));
-		userRoleRepository.save(new UserRoleEntity(login, ROLE_ADMIN));
+		userRoleRepository.save(new UserRoleEntity(login, ROLE_USER));
 		
 	}
 	
