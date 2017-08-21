@@ -1,5 +1,7 @@
 package pl.kwi.springboot.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,10 +28,8 @@ public class UserService {
 	
 	
 	public void registerUser(String login, String password) {
-		
 		userRepository.save(new UserEntity(login, bCryptPasswordEncoder.encode(password), true));
 		userRoleRepository.save(new UserRoleEntity(login, ROLE_USER));
-		
 	}
 	
 	public void addToken(String email, String token) {
@@ -52,6 +52,10 @@ public class UserService {
 		UserEntity user = userRepository.findByEmail(email);
 		user.setPassword(bCryptPasswordEncoder.encode(password));
 		userRepository.save(user);
+	}
+	
+	public List<UserEntity> getUsersToApprove() {
+		return userRepository.findAllToApprove();
 	}
 	
 	

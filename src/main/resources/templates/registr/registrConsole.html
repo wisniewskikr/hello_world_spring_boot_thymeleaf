@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Input</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+	<link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.3/smoothness/jquery-ui-1.10.3.custom.css}"
+		href="../../css/jquery-ui-1.10.3/smoothness/jquery-ui-1.10.3.custom.css" />	
+	<script type="text/javascript" th:inline="javascript" th:src="@{/js/jquery-1.9.1.js}"></script>
+	<script type="text/javascript" th:inline="javascript" th:src="@{/js/jquery-ui-1.10.3.custom.js}"></script>
+	<script type="text/javascript" th:inline="javascript" th:src="@{/js/script.js}"></script>			
+</head>
+
+<body>
+
+	
+	<div class="page">
+		    
+		<form method="post" action="#" th:action="@{/registrationConsole/handle-button-approve}" th:object="${command}">
+			<div id="title" class="title">
+				<h2>Hello World</h2></div>
+			<div id="subtitle" class="subtitle"><h3>Page: Registration Console</h3></div>
+			<div id="content" class="content">
+			
+				<div class="contentElement" th:if="*{!users.empty}">
+					<div>Users to approve:</div>
+					<ul>
+				       <li th:each="user : *{users}" th:text="${user.email}">Users to approve</li>
+				    </ul>
+				</div>
+				
+				<div class="contentElement" th:if="*{users.empty}">
+					<div>No users to approve</div>
+				</div>
+				
+			</div>
+			<div id="buttons" class="buttons">
+				<input type="submit" id="approve" name="approve" value="Approve" title="Approve new user"/>
+				<a href="/login">Cancel</a>
+			</div>
+		</form>	
+	</div>
+		
+
+</body>
+</html>
