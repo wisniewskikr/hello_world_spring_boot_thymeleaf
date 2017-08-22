@@ -13,6 +13,7 @@ public class RegistrConsoleCommand implements Serializable{
 	
 	
 	private List<UserEntity> users = new ArrayList<UserEntity>();
+	private List<String> selectedUsers = new ArrayList<String>();
 
 
 	public List<UserEntity> getUsers() {
@@ -20,6 +21,13 @@ public class RegistrConsoleCommand implements Serializable{
 	}
 	public void setUsers(List<UserEntity> users) {
 		this.users = users;
+	}
+	
+	public List<String> getSelectedUsers() {
+		return selectedUsers;
+	}
+	public void setSelectedUsers(List<String> selectedUsers) {
+		this.selectedUsers = selectedUsers;
 	}
 
 	

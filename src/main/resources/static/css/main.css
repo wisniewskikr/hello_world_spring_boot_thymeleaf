@@ -97,3 +97,21 @@
 .alert-error {
 	color: red;
 }
+
+.users {
+	padding: 0;
+	list-style-type: none;
+}
+
+.user label {
+  display: block;
+  float: left;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.user input {
+  vertical-align: middle;
+}
+.user label span {
+  vertical-align: middle;
+}

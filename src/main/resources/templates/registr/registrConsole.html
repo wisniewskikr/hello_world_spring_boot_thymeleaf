@@ -26,8 +26,13 @@
 			
 				<div class="contentElement" th:if="*{!users.empty}">
 					<div>Users to approve:</div>
-					<ul>
-				       <li th:each="user : *{users}" th:text="${user.email}">Users to approve</li>
+					<ul class="users">
+				       <li class="user" th:each="user:*{users}" >
+				       		<label th:for="${user.email}">
+				       			<input type="checkbox" th:name="selectedUsers" th:id="${user.email}" th:value="${user.email}" />
+				       			<span th:text="${user.email}">User email</span>
+				       		</label>
+				       </li>
 				    </ul>
 				</div>
 				

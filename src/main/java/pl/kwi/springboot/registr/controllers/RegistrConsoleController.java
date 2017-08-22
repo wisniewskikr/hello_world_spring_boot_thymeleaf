@@ -1,5 +1,7 @@
 package pl.kwi.springboot.registr.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,11 @@ public class RegistrConsoleController {
 	public String handleButtonApprove (
 			@Valid @ModelAttribute("command")RegistrConsoleCommand command,
 			RedirectAttributes redirectAttributes) {
+		
+		List<String> selectedUsers = command.getSelectedUsers();
+		for (String selectedUser : selectedUsers) {
+			System.out.println("selectedUser: " + selectedUser);
+		}
 		
 		return "redirect:/login";
 	}
