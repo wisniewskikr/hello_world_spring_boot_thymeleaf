@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.kwi.springboot.enums.ConfirmationEnum;
 import pl.kwi.springboot.registr.commands.RegistrCommand;
+import pl.kwi.springboot.services.EmailService;
 import pl.kwi.springboot.services.UserService;
 
 @Controller
@@ -20,6 +21,9 @@ public class RegistrController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	
 	@RequestMapping
@@ -32,6 +36,7 @@ public class RegistrController {
 			@Valid @ModelAttribute("command")RegistrCommand command,
 			RedirectAttributes redirectAttributes) {
 		userService.registerUser(command.getEmail(), command.getPassword());
+		emailService.sendRegistrationEmail(command.getEmail());
 		redirectAttributes.addAttribute("confirmationEnum", ConfirmationEnum.REGISTRATION);
 		return "redirect:/confirmation";
 	}

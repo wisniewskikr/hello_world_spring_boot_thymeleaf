@@ -20,10 +20,13 @@ import org.thymeleaf.util.MapUtils;
 public class EmailService {
 	
 	
-	private static final String TEMPLATE_NAME = "emails/template";
-	private static final String FROM = "wisniewskikr@gmail.com";
-	private static final String SUBJECT = "Reset Email";
+	private static final String RESET_TEMPLATE = "emails/reset";
+	private static final String REGISTRATION_TEMPLATE = "emails/registration";
+	private static final String RESET_SUBJECT = "Reset Email";
+	private static final String REGISTRATION_SUBJECT = "Registration Email";
+	private static final String FROM = "wisniewskikr@gmail.com";	
 	private static final boolean IS_HTML = true;
+	private static final String ADMIN_ACCOUNT = "krzysztof.wisniewski@contractors.roche.com";
 
 
     @Autowired
@@ -37,18 +40,27 @@ public class EmailService {
     	
     	Map<String, Object> customProperties = new HashMap<String, Object>();
     	customProperties.put("link", link);    	
-    	sendHtmlEmail(to, customProperties);
+    	sendHtmlEmail(to, customProperties, RESET_TEMPLATE, RESET_SUBJECT);
     	
     }
     
-    public void sendHtmlEmail(String to, Map<String, Object> customProperties) {
+    public void sendRegistrationEmail(String email) {
+    	
+    	Map<String, Object> customProperties = new HashMap<String, Object>();
+    	customProperties.put("link", "http://localhost:8080/registrationConsole");  
+    	customProperties.put("userEmail", email); 
+    	sendHtmlEmail(ADMIN_ACCOUNT, customProperties, REGISTRATION_TEMPLATE, REGISTRATION_SUBJECT);
+    	
+    }
+    
+    public void sendHtmlEmail(String to, Map<String, Object> customProperties, String template, String subject) {
         final Context context = new Context();
 
         if (!MapUtils.isEmpty(customProperties)) {
             context.setVariables(customProperties);
         }
-        final String htmlBody = templateEngine.process(TEMPLATE_NAME, context);
-        sendEmail(FROM, to, SUBJECT, htmlBody, IS_HTML);
+        final String htmlBody = templateEngine.process(template, context);
+        sendEmail(FROM, to, subject, htmlBody, IS_HTML);
     }
 
     public void sendEmail(String from, String to, String subject, String text, boolean isHtml) {
