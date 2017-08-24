@@ -36,10 +36,10 @@ public class RegistrConsoleController {
 		
 		List<String> selectedUsers = command.getSelectedUsers();
 		for (String selectedUser : selectedUsers) {
-			System.out.println("selectedUser: " + selectedUser);
+			userService.activateUser(selectedUser);
 		}
 		
-		return "redirect:/login";
+		return "redirect:/registrationConsole";
 	}
 
 }

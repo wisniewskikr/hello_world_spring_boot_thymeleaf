@@ -28,7 +28,7 @@ public class UserService {
 	
 	
 	public void registerUser(String login, String password) {
-		userRepository.save(new UserEntity(login, bCryptPasswordEncoder.encode(password), true));
+		userRepository.save(new UserEntity(login, bCryptPasswordEncoder.encode(password), false));
 		userRoleRepository.save(new UserRoleEntity(login, ROLE_USER));
 	}
 	
@@ -56,6 +56,12 @@ public class UserService {
 	
 	public List<UserEntity> getUsersToApprove() {
 		return userRepository.findAllToApprove();
+	}
+	
+	public void activateUser(String email) {
+		UserEntity user = userRepository.findByEmail(email);
+		user.setEnabled(true);
+		userRepository.save(user);
 	}
 	
 	
