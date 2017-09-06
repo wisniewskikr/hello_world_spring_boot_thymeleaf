@@ -16,10 +16,29 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<keycloak.version>3.2.1.Final</keycloak.version>
 	</properties>
 
 	<dependencies>	
 	
+		<!-- Keycloak Spring Security adapter -->
+		<dependency>
+		    <groupId>org.keycloak</groupId>
+		    <artifactId>keycloak-spring-security-adapter</artifactId>
+		</dependency>
+		
+		<!-- Keycloak dependencies -->
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-spring-boot-starter</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.keycloak</groupId>
+		    <artifactId>keycloak-spring-boot-starter</artifactId>
+		    <version>3.1.0.Final</version>
+		</dependency>
+		
 		<!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -46,6 +65,18 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.keycloak.bom</groupId>
+				<artifactId>keycloak-adapter-bom</artifactId>
+				<version>${keycloak.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 		
 	<build>
 		<plugins>
