@@ -1,16 +1,11 @@
 package pl.kwi.springboot.controllers;
 
-import java.io.File;
-
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.context.embedded.LocalServerPort;
@@ -20,13 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class InputControllerTest {
-	
-	private static final String FIREFOX_LOCATION = "C:\\ff\\firefox.exe";
 	
 	private WebDriver driver;
 	private WebDriverWait wait;
@@ -36,8 +30,7 @@ public class InputControllerTest {
 	
 	@Before
 	public void setUp() {
-		driver = new FirefoxDriver(new FirefoxBinary(new File(
-				FIREFOX_LOCATION)), new FirefoxProfile());
+		driver = new ChromeDriver();		
 		wait = new WebDriverWait(driver, 20);
 	}
 	
