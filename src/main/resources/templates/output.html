@@ -14,9 +14,18 @@
 </head>
 
 <body>
-
-	<form method="post" action="#" th:action="@{/output/handle-button-back}" th:object="${command}">
-		<div class="page">
+	
+	
+	<div class="page">
+	
+		<div class="header">
+			<div th:inline="text">Hello <span th:text="${userName}">userName</span></div>
+			<form th:action="@{/logout}" method="post" class="buttons">
+		    	<input type="submit" value="Sign Out"/>
+		    </form>
+	    </div>
+	    
+	    <form method="post" action="#" th:action="@{/output/handle-button-back}" th:object="${command}">
 			<div id="title" class="title"><h2>Hello World</h2></div>
 			<div id="subtitle" class="subtitle"><h3>Page: Output</h3></div>
 			<div id="content" class="content">
@@ -30,8 +39,9 @@
 			<div id="buttons" class="buttons">
 				<input type="submit" id="back" name="back" value="Back" title="Go back to previous page"/>
 			</div>
-		</div>
-	</form>	
+		</form>	
+	</div>
+	
 
 </body>
 </html>

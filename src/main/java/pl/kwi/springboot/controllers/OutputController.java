@@ -12,7 +12,7 @@ import pl.kwi.springboot.services.NameService;
 
 @Controller
 @RequestMapping(value="/output")
-public class OutputController{
+public class OutputController extends AbstractController {
 	
 	
 	@Autowired
