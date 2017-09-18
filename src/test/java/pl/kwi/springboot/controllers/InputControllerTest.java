@@ -2,6 +2,8 @@ package pl.kwi.springboot.controllers;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +17,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
 
 @RunWith(SpringRunner.class)
@@ -30,7 +34,8 @@ public class InputControllerTest {
 	
 	@Before
 	public void setUp() {
-		driver = new ChromeDriver();		
+		driver = new FirefoxDriver(new FirefoxBinary(new File(
+				System.getProperty("user.dir") + "\\FirefoxPortable\\App\\Firefox\\firefox.exe")), new FirefoxProfile());		
 		wait = new WebDriverWait(driver, 20);
 	}
 	
