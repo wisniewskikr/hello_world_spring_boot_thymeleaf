@@ -1,10 +1,18 @@
-Spring Boot + Thymeleaf + Spring Security
+Spring Boot + Thymeleaf + KEYCLOAK + SAML
 
-Example application displays how Spring Security works. Users are stored in memory.
+Two thinks does not work here:
+- logout
+- user name format
 
 Differences vs basic:
 - add SpringSecurityConfig;
-- add LoginController;
-- add security/login.html template;
-- add logout section to all secured pages;
-- add styles for security elements.
+- add in POM:
+<dependency>
+		    <groupId>org.springframework.security.extensions</groupId>
+		    <artifactId>spring-security-saml-dsl</artifactId>
+		    <version>1.0.0.M3</version>
+		</dependency>
+		
+Keycloak:
+- client id has to be the same as URL;
+- keys pair has to be the same in keycloak and in application. Download them from keycloak.			
