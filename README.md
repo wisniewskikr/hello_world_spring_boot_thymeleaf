@@ -3,9 +3,8 @@ Spring Boot + Thymeleaf + KEYCLOAK + SAML
 Link:
 https://localhost:8444
 
-Two thinks does not work here:
+One thing does not work here:
 - logout
-- user name format
 
 Differences vs basic:
 - add SpringSecurityConfig;
