@@ -13,7 +13,7 @@ import pl.kwi.springboot.services.NameService;
 
 @Controller
 @RequestMapping(value="/input")
-public class InputController {
+public class InputController extends AbstractController {
 	
 	@Autowired
 	private NameService nameService;
