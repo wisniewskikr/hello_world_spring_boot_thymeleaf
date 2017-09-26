@@ -1,19 +1,9 @@
 package pl.kwi.springboot.commands;
 
-import java.io.Serializable;
+import lombok.Data;
 
-
-public class OutputCommand implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+public @Data class OutputCommand {
 	
 	private String name;
 
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}	
-	
 }

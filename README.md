@@ -1,20 +1,19 @@
-TO DO:
-- security + csrf;
-- security + password encoding;
-- JUnit tests;
-- integration tests.
+SPRING-BOOT + THYMELEAF + LOMBOK
 
+Lombok is an library which automatically implements getters, setters, constructors, toString etc.
 
-Spring Boot + Thymeleaf + Spring Security
-
-Example application displays how Spring Security works. Users are stored in memory.
 
 Differences vs basic:
-- add SpringSecurityConfig;
-- add LoginController;
-- add security/login.html template;
-- add logout section to all secured pages;
-- add styles for security elements.
+- add Lombok dependency in pom.xml
+<!-- Lombok dependency -->
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+        </dependency>
+        
+- remove all getters and setters and add annotation @Data
+For instance in classes InputController and OutputController 
 
-http://www.mkyong.com/spring-security/spring-security-form-login-using-database/
-https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
+- to connect Lombok with Eclipse IDE:
+click on "lombok.jar" and select Eclipse IDE location.       
