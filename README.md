@@ -1,7 +1,7 @@
-Spring Boot + Thymeleaf application with example usage of Derby database.
+Spring Boot + Thymeleaf + Derby + JpaRepository
 
 Differences vs basic:
 - in POM add db dependencies;
 - add Entity class;
-- add Dao class;
+- add UserRepository class;
 - add Service class. 

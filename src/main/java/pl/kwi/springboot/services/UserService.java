@@ -3,25 +3,26 @@ package pl.kwi.springboot.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pl.kwi.springboot.db.daos.UserDao;
 import pl.kwi.springboot.db.entities.UserEntity;
+import pl.kwi.springboot.db.repositories.UserRepository;
 
 @Service
 public class UserService {
 	
 	
 	@Autowired
-	private UserDao userDao;
+	private UserRepository userRepository;
 	
 	
 	public long createUserWithName(String name) {
 		UserEntity user = new UserEntity();
 		user.setName(name);
-		return userDao.createUser(user);
+		user = userRepository.save(user);
+		return user.getId();
 	}
 	
 	public String getNameUserById(long id) {
-		UserEntity user = userDao.readUserById(id);
+		UserEntity user = userRepository.findOne(id);
 		return user.getName();
 	}
 	
