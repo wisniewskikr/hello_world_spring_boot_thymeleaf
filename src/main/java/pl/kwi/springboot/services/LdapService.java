@@ -1,15 +1,14 @@
 package pl.kwi.springboot.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
 import javax.naming.directory.BasicAttribute;
 import javax.naming.directory.BasicAttributes;
 import javax.naming.directory.SearchControls;
@@ -74,7 +73,7 @@ public class LdapService {
 	        ldapContext.createSubcontext(entryDN, entry);  
 	
 	    } catch (NamingException e) {  
-	        System.err.println("AddUser: error adding entry." + e);  
+	        System.err.println("save: error adding entry." + e);  
 	    }
 	    
 	    return uid;
@@ -82,70 +81,31 @@ public class LdapService {
 	}
 	
 	public String load(String uid){
-		String searchFilter = getSearchFilter("uid", uid);
-		List<String> attributes = getFilteredAttributesByKey(searchFilter, "sn");
 		
-		if(attributes.isEmpty()){
-			return null;
+		String result = null;
+		
+		//filter
+		String filter = String.format("(uid=%s)", uid);
+		
+		// search controls
+		SearchControls sc = new SearchControls();
+	    String[] attributeFilter = { "cn" };
+	    sc.setReturningAttributes(attributeFilter);
+	    sc.setSearchScope(SearchControls.SUBTREE_SCOPE);
+	    
+	    try {
+			NamingEnumeration<SearchResult> results = ldapContext.search(LDAP_DN, filter, sc);
+			while (results.hasMore()) {
+			      SearchResult sr = results.next();
+			      Attributes attrs = sr.getAttributes();
+			      result = (String)attrs.get("cn").get();
+			    }
+		} catch (NamingException e) {
+			System.err.println("load: error reading entry." + e);
 		}
-		
-		return attributes.get(0);
+	    
+	    return result;
+	
 	}
-	
-	
-	// ************ HELP METHODS *************** //
-    
-	
-    private List<String> getFilteredAttributesByKey(String searchFilter, String attributeKey) {
-    	
-    	List<String> result = new ArrayList<String>();
-        
-        try {
-        	           
-            SearchControls searchCtls = getSearchControls(attributeKey);
-            NamingEnumeration<SearchResult> answer = ldapContext.search(LDAP_DN, searchFilter, searchCtls);
-
-            while (answer.hasMoreElements()) {
-                SearchResult sr = answer.next();
-                NamingEnumeration<? extends Attribute> allAttributes = sr.getAttributes().getAll();
-                while (allAttributes.hasMoreElements()) {
-                    Attribute attribute = allAttributes.next();
-                    for (int i = 0; i < attribute.size(); i++) {
-                        result.add(attribute.get(i).toString());
-                    }
-                }
-            }
-            
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-        return result;
-
-    }
-    
-    private String getSearchFilter(String filterKey, String filterValue) {
-    	
-    	StringBuilder sb = new StringBuilder();
-    	sb.append("(");
-    	sb.append(filterKey);
-    	sb.append("=");
-    	sb.append(filterValue);
-    	sb.append(")");
-    	
-        return sb.toString();
-    	
-    }
-    
-    private SearchControls getSearchControls(String attributeKey){
-    	
-    	String returnedAtts[] = { attributeKey };
-    	
-        SearchControls searchCtls = new SearchControls();
-        searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-        searchCtls.setReturningAttributes(returnedAtts);
-        
-        return searchCtls;
-    	
-    }
 
 }
