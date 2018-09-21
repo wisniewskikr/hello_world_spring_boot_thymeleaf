@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import pl.kwi.springboot.commands.abstr.AbstractCommand;
 import pl.kwi.springboot.daos.Language;
 
-public class InputCommand extends AbstractCommand {
+public class InputCommand {
 	
 
 	@NotEmpty
 	private String name;
 	private List<Language> languages;
 	private String language;
+	private String currentLanguage;
 
 	
 	public String getName() {
@@ -37,5 +37,11 @@ public class InputCommand extends AbstractCommand {
 		this.language = language;
 	}
 	
+	public String getCurrentLanguage() {
+		return currentLanguage;
+	}
+	public void setCurrentLanguage(String currentLanguage) {
+		this.currentLanguage = currentLanguage;
+	}	
 		
 }

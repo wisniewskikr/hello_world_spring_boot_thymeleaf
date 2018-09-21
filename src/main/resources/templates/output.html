@@ -15,7 +15,7 @@
 
 <body>
 
-	<form method="post" action="#" th:action="@{/{base}/output/handle-button-back(base=${loc})}" th:object="${command}">
+	<form method="post" action="#" th:action="@{/output/handle-button-back}" th:object="${command}">
 		<div class="page">
 			<div id="title" class="title"><h2 th:text="#{output.title}"></h2></div>
 			<div id="subtitle" class="subtitle"><h3 th:text="#{output.subtitle}"></h3></div>

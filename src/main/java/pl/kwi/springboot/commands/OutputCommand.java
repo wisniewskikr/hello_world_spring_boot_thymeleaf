@@ -1,9 +1,7 @@
 package pl.kwi.springboot.commands;
 
-import pl.kwi.springboot.commands.abstr.AbstractCommand;
 
-
-public class OutputCommand extends AbstractCommand {
+public class OutputCommand {
 	
 
 	private String name;

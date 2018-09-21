@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.kwi.springboot.commands.OutputCommand;
-import pl.kwi.springboot.controllers.abstr.AbstractController;
 import pl.kwi.springboot.services.NameService;
 
 
 @Controller
-public class OutputController extends AbstractController {
+public class OutputController {
 	
 	
 	@Autowired
@@ -35,7 +34,7 @@ public class OutputController extends AbstractController {
 	public String handleButtonBack(
 			@ModelAttribute("command")OutputCommand command){
 		
-		return "redirect:/" + command.getLoc() + "/input";
+		return "redirect:/input";
 		
 	}	
 
